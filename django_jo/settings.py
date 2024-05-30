@@ -163,11 +163,11 @@ if DEBUG:
             # 'NAME': BASE_DIR / 'db.sqlite3',
 
         'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'postgres',
-        'PASSWORD': '',
+        'USER': 'AdminStudi',
+        'PASSWORD': 'Bloc3exam2024',
         'HOST': '127.0.0.1',
         'PORT': '5432',
-        'NAME': 'exammi',
+        'NAME': 'jeux_studi'
 
     }
 else:
