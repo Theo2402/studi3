@@ -19,7 +19,7 @@ from decouple import config
 
 #env = environ.Env()
 #environ.Env.read_env()
-
+SECRET_KEY='django-insecure-5ftc@ot()mju46$sw5h#ar_d^3oe8=ym^3nky@uj=^9pe^$%5y'
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -33,7 +33,8 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 #ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
 #ALLOWED_HOSTS = ['localhost','127.0.0.1','examen222-dfbc0e25d483.herokuapp.com','examm-fiverr-037f3e5b5715.herokuapp.com']
 AUTH_USER_MODEL = 'user.UserProfile'
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*'] 
+ALLOWED_HOSTS = ['bloc3exam-a2922cc2f685.herokuapp.com']
 
 # Application definition
 INSTALLED_APPS = [
@@ -144,14 +145,14 @@ DATABASES = {
 
 
 
-    #   'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'USER': 'postgres',
-    #     'PASSWORD': '',
-    #     'HOST': '127.0.0.1',
-    #     'PORT': '5432',
-    #     'NAME': 'exammi',
-    # }
+       'default': {
+         'ENGINE': 'django.db.backends.postgresql',
+         'USER': 'ubs9h052rggt2m',
+         'PASSWORD': 'p459fc3862d6dc15e569eaa3e264768d034d1f3ce5e301706a25e97087f0d1ee0',
+         'HOST': 'c7u1tn6bvvsodf.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com',
+         'PORT': '5432',
+         'NAME': 'd412olpe262c9o',
+     }
 }
 
 
