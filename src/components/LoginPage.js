@@ -5,6 +5,10 @@ import { useAuth } from '../contexts/AuthContext';
 import '../css/LoginPage.css';
 import { HeaderBase, FooterBase } from "./HeaderFooter";
 
+
+const API_BASE_URL = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000' : 'https://bloc3exam-a2922cc2f685.herokuapp.com';
+
+
 const getTotalQuantity = () => {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   return cart.reduce((acc, item) => acc + item.quantity, 0);
@@ -27,7 +31,7 @@ const LoginPage = () => {
     setLoading(true);
     setSignInError('');
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/token/', { username, password });
+      const response = await axios.post(`${API_BASE_URL}/api/token/`, { username, password });
       const accessToken = response.data.access;
       const refreshToken = response.data.refresh;
 
