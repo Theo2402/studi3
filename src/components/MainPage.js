@@ -5,6 +5,9 @@ import checkmark from '../animations/icons8-checkmark.gif';
 import { HeaderBase, FooterBase } from './HeaderFooter.js';
 
 
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const getTotalQuantity = () => {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   return cart.reduce((acc, item) => acc + item.quantity, 0);
@@ -19,7 +22,7 @@ const MainPage = () => {
   useEffect(() => {
     const fetchOffers = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/offer/');
+        const response = await axios.get(`${API_BASE_URL}/api/offer/`);
         setOffers(response.data);
         setQuantities(response.data.map(() => 0)); 
       } catch (error) {

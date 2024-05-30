@@ -6,6 +6,9 @@ import { HeaderBase, FooterBase } from "./HeaderFooter";
 import '../css/Profile.css';
 import { useAuth } from '../contexts/AuthContext';
 
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL; 
+
 const getTotalQuantity = () => {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   return cart.reduce((acc, item) => acc + item.quantity, 0);
@@ -23,7 +26,7 @@ const Profile = () => {
   const fetchPurchases = useCallback(async (currentToken) => {
     setIsLoading(true);
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/purchase/purchase/', {
+      const response = await axios.get(`${API_BASE_URL}/api/purchase/purchase/`, {
         headers: { 'Authorization': `Bearer ${currentToken}` }
       });
       console.log('API Response:', response.data);
@@ -63,7 +66,7 @@ const Profile = () => {
         navigate('/login');
         return;
       }
-      const response = await axios.post('http://127.0.0.1:8000/api/token/refresh/', { refresh: refreshToken });
+      const response = await axios.post(`${API_BASE_URL}/api/token/refresh/`, { refresh: refreshToken });
       const newAccessToken = response.data.access;
       const newExpiresAt = new Date().getTime() + (response.data.expires_in * 1000);
       localStorage.setItem('access_token', newAccessToken);

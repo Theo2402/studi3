@@ -4,6 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import '../css/RegisterPage.css';
 import { HeaderBase, FooterBase } from "./HeaderFooter";
 
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL; 
+console.log('API_BASE_URL:', API_BASE_URL);
+
 const getTotalQuantity = () => {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   return cart.reduce((acc, item) => acc + item.quantity, 0);
@@ -39,7 +43,7 @@ const RegisterPage = () => {
       const checkUsernameAvailability = async () => {
         setIsCheckingUsername(true);
         try {
-          const response = await axios.get(`http://127.0.0.1:8000/api/check-username/${username}`);
+          const response = await axios.get(`${API_BASE_URL}/api/check-username/${username}`);
           setIsUsernameTaken(response.data.isTaken);
           setIsCheckingUsername(false);
           if (response.data.isTaken) {
@@ -102,7 +106,7 @@ const RegisterPage = () => {
 
     const user = { username, name, email, password };
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/register/', user);
+      const response = await axios.post(`${API_BASE_URL}/api/register/`, user);
       console.log('User registered:', response.data);
       setNotification({ message: 'Registration successful! Redirecting to login...', type: 'success' });
       setTimeout(() => {

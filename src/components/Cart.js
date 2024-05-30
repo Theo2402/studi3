@@ -3,6 +3,9 @@ import axios from 'axios';
 import '../css/Cart.css';
 import { HeaderBase, FooterBase } from "./HeaderFooter";
 
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const getTotalQuantity = () => {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   return cart.reduce((acc, item) => acc + item.quantity, 0);
@@ -38,7 +41,7 @@ const Cart = () => {
       //console.log("Payload being sent:", payload); 
       //console.log("Access Token:", token);
 
-      const response = await axios.post('http://127.0.0.1:8000/api/purchase/purchase/', payload, {
+      const response = await axios.post(`${API_BASE_URL}/api/purchase/purchase/`, payload, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

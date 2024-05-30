@@ -191,8 +191,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8000',  
+CORS_ALLOWED_ORIGINS = [ 
     'https://bloc3exam-a2922cc2f685.herokuapp.com',  
 ]
 

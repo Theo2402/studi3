@@ -72,3 +72,4 @@ class RegisterUserAPIView(APIView):
         else:
             print("Errors:", serializer.errors)  # Log errors
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        

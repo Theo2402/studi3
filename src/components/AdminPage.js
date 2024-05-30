@@ -9,6 +9,10 @@ import '../css/AdminPage.css';
 import '../css/MainPage.css';
 import '../css/AdminOffre.css';
 
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL; 
+console.log('API_BASE_URL:', API_BASE_URL);
+
 const AdminPage = () => {
   const [users, setUsers] = useState([]);
   const [purchases, setPurchases] = useState([]);
@@ -35,7 +39,7 @@ const AdminPage = () => {
 
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/user/', {
+        const response = await axios.get(`${API_BASE_URL}/api/user/`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -53,7 +57,7 @@ const AdminPage = () => {
 
     const fetchPurchases = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/purchase/purchase/', {
+        const response = await axios.get(`${API_BASE_URL}/api/purchase/purchase/`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -71,7 +75,7 @@ const AdminPage = () => {
 
     const fetchOffers = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/offer/', {
+        const response = await axios.get(`${API_BASE_URL}/api/offer/`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -96,7 +100,7 @@ const AdminPage = () => {
     e.preventDefault();
     const token = localStorage.getItem('access_token');
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/offer/', newOffer, {
+      const response = await axios.post(`${API_BASE_URL}/api/offer/`, newOffer, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -112,7 +116,7 @@ const AdminPage = () => {
   const handleDeleteOffer = async (offerId) => {
     const token = localStorage.getItem('access_token');
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/offer/${offerId}/`, {
+      await axios.delete(`${API_BASE_URL}/api/offer/${offerId}/`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -126,7 +130,7 @@ const AdminPage = () => {
   const handleDeleteUser = async () => {
     const token = localStorage.getItem('access_token');
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/user/${userToDelete.uuid}/`, {
+      await axios.delete(`${API_BASE_URL}/api/user/${userToDelete.uuid}/`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
