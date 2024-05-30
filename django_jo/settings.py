@@ -143,15 +143,35 @@ DATABASES = {
 
 
 
-      'default': {
+    #   'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'USER': 'postgres',
+    #     'PASSWORD': '',
+    #     'HOST': '127.0.0.1',
+    #     'PORT': '5432',
+    #     'NAME': 'exammi',
+    # }
+}
+
+
+
+if DEBUG:
+    DATABASES["default"]={
+            # 'ENGINE': 'django.db.backends.sqlite3',
+            # 'NAME': BASE_DIR / 'db.sqlite3',
+
         'ENGINE': 'django.db.backends.postgresql',
         'USER': 'postgres',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '5432',
         'NAME': 'exammi',
+
     }
-}
+else:
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+    DATABASES['default'] = dj_database_url.config(default=config('DATABASE_URL'))
+
 
 
 AUTH_PASSWORD_VALIDATORS = [
