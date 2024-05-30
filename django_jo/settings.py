@@ -31,8 +31,9 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 #ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
-ALLOWED_HOSTS = ['localhost','127.0.0.1','examen222-dfbc0e25d483.herokuapp.com','examm-fiverr-037f3e5b5715.herokuapp.com']
+#ALLOWED_HOSTS = ['localhost','127.0.0.1','examen222-dfbc0e25d483.herokuapp.com','examm-fiverr-037f3e5b5715.herokuapp.com']
 AUTH_USER_MODEL = 'user.UserProfile'
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
