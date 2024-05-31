@@ -25,6 +25,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     setTotalQuantity(getTotalQuantity());
+    console.log('API_BASE_URL in useEffect:', API_BASE_URL);
   }, []);
 
   const handleLogin = async () => {

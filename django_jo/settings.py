@@ -33,8 +33,8 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 #ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
 #ALLOWED_HOSTS = ['localhost','127.0.0.1','examen222-dfbc0e25d483.herokuapp.com','examm-fiverr-037f3e5b5715.herokuapp.com']
 AUTH_USER_MODEL = 'user.UserProfile'
-#ALLOWED_HOSTS = ['*'] 
-ALLOWED_HOSTS = ['*','bloc3exam-a2922cc2f685.herokuapp.com']
+ALLOWED_HOSTS = ['*'] 
+#LLOWED_HOSTS = ['bloc3exam-a2922cc2f685.herokuapp.com']
 
 # Application definition
 INSTALLED_APPS = [
@@ -157,22 +157,22 @@ DATABASES = {
 
 
 
-if DEBUG:
-    DATABASES["default"]={
-            # 'ENGINE': 'django.db.backends.sqlite3',
-            # 'NAME': BASE_DIR / 'db.sqlite3',
+# if DEBUG:
+#     DATABASES["default"]={
+#             # 'ENGINE': 'django.db.backends.sqlite3',
+#             # 'NAME': BASE_DIR / 'db.sqlite3',
 
-        'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'AdminStudi',
-        'PASSWORD': 'Bloc3exam2024',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-        'NAME': 'jeux_studi'
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'USER': 'AdminStudi',
+#         'PASSWORD': 'Bloc3exam2024',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#         'NAME': 'jeux_studi'
 
-    }
-else:
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-    DATABASES['default'] = dj_database_url.config(default=config('DATABASE_URL'))
+#     }
+# else:
+#     DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+#     DATABASES['default'] = dj_database_url.config(default=config('DATABASE_URL'))
 
 
 
