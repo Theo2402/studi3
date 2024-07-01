@@ -5,11 +5,8 @@ import { useAuth } from '../contexts/AuthContext';
 import '../css/LoginPage.css';
 import { HeaderBase, FooterBase } from "./HeaderFooter";
 
-
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL; //|| 'http://127.0.0.1:8000';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 console.log('API_BASE_URL:', API_BASE_URL);
-
-
 
 const getTotalQuantity = () => {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -25,9 +22,6 @@ const LoginPage = () => {
   const [signInError, setSignInError] = useState('');
   const [totalQuantity, setTotalQuantity] = useState(getTotalQuantity());
 
-
-  axios.post(`${API_BASE_URL}/api/token/`, { username, password });
-
   useEffect(() => {
     setTotalQuantity(getTotalQuantity());
     console.log('API_BASE_URL in useEffect:', API_BASE_URL);
@@ -35,10 +29,15 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     console.log('API_BASE_URL:', API_BASE_URL);
+    console.log('Login Data:', { username, password }); // Log the data being sent
+
     setLoading(true);
     setSignInError('');
+    
     try {
       const response = await axios.post(`${API_BASE_URL}/api/token/`, { username, password });
+      console.log('Response:', response.data); // Log the response data
+
       const accessToken = response.data.access;
       const refreshToken = response.data.refresh;
 
@@ -53,9 +52,10 @@ const LoginPage = () => {
         console.error('Invalid token');
       }
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error('Login failed:', error.response ? error.response.data : error.message); // Log the error response data
       setSignInError('Echec de connexion. Veuillez réessayer');
     }
+
     setLoading(false);
   };
 
@@ -114,7 +114,4 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
-
-
 
