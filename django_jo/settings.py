@@ -223,6 +223,6 @@ SSL_CRT_FILE = config('SSL_CRT_FILE', default=None)
 SSL_KEY_FILE = config('SSL_KEY_FILE', default=None)
 HTTPS = config('HTTPS', default=False, cast=bool)
 
-# Configure Django App for Heroku.
+
 django_heroku.settings(locals())
 
