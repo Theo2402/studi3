@@ -218,7 +218,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'frontend' ),
+    os.path.join(BASE_DIR, 'frontend/static' ),
     #os.path.join(BASE_DIR, 'build/static' ), #'frontend', ,'frontend/static'
     #os.path.join(BASE_DIR, 'static/static'),
     #os.path.join(BASE_DIR, 'staticfiles'),
