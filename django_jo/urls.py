@@ -34,7 +34,7 @@ urlpatterns = [
     path('api/purchase/', include('purchase.urls')),
     path('api/register/', RegisterUserAPIView.as_view(), name='register'), 
     path('', TemplateView.as_view(template_name='index.html')),
-    re_path(r'^.*$', TemplateView.as_view(template_name='index.html')), 
+    #re_path(r'^.*$', TemplateView.as_view(template_name='index.html')), 
 ]
 
 
