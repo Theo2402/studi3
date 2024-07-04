@@ -55,10 +55,10 @@ INSTALLED_APPS = [
   
 ]
 
-#CSP_DEFAULT_SRC = ("'self'",)
-#CSP_STYLE_SRC = ("'self'", 'https://bloc3exam-a2922cc2f685.herokuapp.com')
-#CSP_SCRIPT_SRC = ("'self'", 'https://bloc3exam-a2922cc2f685.herokuapp.com')
-#CSP_CONNECT_SRC = ("'self'", 'https://bloc3exam-a2922cc2f685.herokuapp.com')
+CSP_DEFAULT_SRC = ("'self'",)
+CSP_STYLE_SRC = ("'self'", 'https://bloc3exam-a2922cc2f685.herokuapp.com')
+CSP_SCRIPT_SRC = ("'self'", 'https://bloc3exam-a2922cc2f685.herokuapp.com')
+CSP_CONNECT_SRC = ("'self'", 'https://bloc3exam-a2922cc2f685.herokuapp.com')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
