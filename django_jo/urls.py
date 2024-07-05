@@ -24,6 +24,7 @@ from rest_framework.routers import DefaultRouter
 from django.urls import path, include
 from django.views.generic import TemplateView
 from .views import index
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,6 +35,8 @@ urlpatterns = [
     path('api/purchase/', include('purchase.urls')),
     path('api/register/', RegisterUserAPIView.as_view(), name='register'), 
     path('', TemplateView.as_view(template_name='index.html')),
+    path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
+
     #re_path(r'^.*$', TemplateView.as_view(template_name='index.html')), 
 ]
 
