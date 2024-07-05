@@ -59,7 +59,7 @@ CSP_DEFAULT_SRC = ("'self'",)
 CSP_STYLE_SRC = ("'self'", 'https://bloc3exam-a2922cc2f685.herokuapp.com')
 CSP_SCRIPT_SRC = ("'self'", 'https://bloc3exam-a2922cc2f685.herokuapp.com')
 CSP_CONNECT_SRC = ("'self'", 'https://bloc3exam-a2922cc2f685.herokuapp.com')
-CSP_IMG_SRC = ("'self'", 'data:')
+CSP_IMG_SRC = ("'self'", 'data:', 'https://bloc3exam-a2922cc2f685.herokuapp.com')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -80,7 +80,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
        
-        'DIRS': [os.path.join(BASE_DIR, 'frontend/build')],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend')], #'frontend/build'
 
         'APP_DIRS': True,
         'OPTIONS': {
@@ -216,7 +216,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'frontend/build' ), 
+    os.path.join(BASE_DIR, 'frontend/build/static' ), 
     #os.path.join(BASE_DIR, 'frontend/static' ), #'frontend', 'frontend/static'
 ]
 
