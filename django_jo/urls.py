@@ -25,6 +25,8 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from .views import index
 from django.views.generic.base import RedirectView
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,8 +38,9 @@ urlpatterns = [
     path('api/register/', RegisterUserAPIView.as_view(), name='register'), 
     path('', TemplateView.as_view(template_name='index.html')),
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
-
+    re_path(r'^.*$', TemplateView.as_view(template_name='index.html')),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     #re_path(r'^.*$', TemplateView.as_view(template_name='index.html')), 
-]
+#]
 
 
